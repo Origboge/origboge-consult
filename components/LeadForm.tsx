@@ -16,7 +16,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 const formSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
-  whatsapp: z.string().min(10, "WhatsApp number must be at least 10 digits"),
+  whatsapp: z.string()
+    .regex(/^\d{10,11}$/, "Enter a valid 10 or 11 digit Nigerian number")
+    .transform((val) => (val.length === 10 ? `0${val}` : val)),
   challenge: z.string().min(10, "Please describe your challenge in more detail (min 10 chars)"),
 });
 
@@ -30,15 +32,15 @@ const shakeAnimation = {
 const confettiColors = ["#ef4444", "#3b82f6", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899"];
 
 // Pre-compute all random values outside the component so they are stable on every render
-const CONFETTI_PARTICLES = Array.from({ length: 24 }).map((_, i) => ({
+const CONFETTI_PARTICLES = Array.from({ length: 60 }).map((_, i) => ({
   id: i,
   color: confettiColors[i % confettiColors.length],
-  left: (i / 24) * 100 + (i % 3) * 3,
-  size: 6 + (i % 4),
-  duration: 1.5 + (i % 3) * 0.5,
-  delay: (i % 5) * 0.08,
-  finalBottom: 10 + (i % 3) * 8,
-  finalRotate: 60 + i * 15,
+  left: (i / 60) * 100 + (i % 5) * 1.2,
+  size: 5 + (i % 6),
+  duration: 1.2 + (i % 5) * 0.35,
+  delay: (i % 12) * 0.05,
+  finalBottom: 5 + (i % 6) * 6,
+  finalRotate: 45 + i * 22,
 }));
 
 function SuccessConfetti() {
@@ -68,6 +70,8 @@ export function LeadForm() {
     register,
     handleSubmit,
     reset,
+    setError,
+    clearErrors,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -190,13 +194,13 @@ export function LeadForm() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           <Card
-              className="w-full max-w-md mx-auto border-slate-200 shadow-2xl rounded-2xl"
-              style={{
-                backgroundImage: `radial-gradient(circle, rgba(59,130,246,0.12) 1px, transparent 1px)`,
-                backgroundSize: "22px 22px",
-                backgroundColor: "#ffffff",
-              }}
-            >
+            className="w-full max-w-md mx-auto border-slate-200 shadow-2xl rounded-2xl"
+            style={{
+              backgroundImage: `radial-gradient(circle, rgba(59,130,246,0.25) 1.2px, transparent 1.2px)`,
+              backgroundSize: "24px 24px",
+              backgroundColor: "#ffffff",
+            }}
+          >
             <CardHeader className="text-center">
               <CardTitle className="text-2xl font-bold text-blue-600">Get Expert Advice</CardTitle>
               <CardDescription className="text-slate-600">
@@ -209,10 +213,10 @@ export function LeadForm() {
                   animate={errors.fullName ? shakeAnimation : {}}
                   className="space-y-2"
                 >
-                  <Label htmlFor="fullName" className="text-slate-700 font-medium">Full Name</Label>
+                  <Label htmlFor="fullName" className="text-slate-900 font-semibold">Full Name</Label>
                   <Input
                     id="fullName"
-                    placeholder="John Doe"
+                    placeholder="Femi Johnson"
                     {...register("fullName")}
                     className={`rounded-xl transition-all ${errors.fullName ? "border-red-500 focus-visible:ring-red-500" : "border-slate-200 focus-visible:ring-blue-500"}`}
                   />
@@ -223,11 +227,11 @@ export function LeadForm() {
                   animate={errors.email ? shakeAnimation : {}}
                   className="space-y-2"
                 >
-                  <Label htmlFor="email" className="text-slate-700 font-medium">Email Address</Label>
+                  <Label htmlFor="email" className="text-slate-900 font-semibold">Email Address</Label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder="Femi@example.com"
                     {...register("email")}
                     className={`rounded-xl transition-all ${errors.email ? "border-red-500 focus-visible:ring-red-500" : "border-slate-200 focus-visible:ring-blue-500"}`}
                   />
@@ -238,23 +242,38 @@ export function LeadForm() {
                   animate={errors.whatsapp ? shakeAnimation : {}}
                   className="space-y-2"
                 >
-                  <Label htmlFor="whatsapp" className="text-slate-700 font-medium">WhatsApp Number</Label>
+                  <Label htmlFor="whatsapp" className="text-slate-900 font-semibold">WhatsApp Number</Label>
                   <Input
                     id="whatsapp"
                     type="tel"
                     inputMode="numeric"
-                    placeholder="+234..."
+                    placeholder="e.g. 08012345678"
                     {...register("whatsapp")}
+                    onInput={(e) => {
+                      const val = e.currentTarget.value.replace(/[^0-9]/g, "");
+                      if (e.currentTarget.value.length > 11 || val.length > 11) {
+                        setError("whatsapp", {
+                          type: "manual",
+                          message: "Maximum 11 digits allowed"
+                        });
+                      } else if (errors.whatsapp?.type === "manual") {
+                        clearErrors("whatsapp");
+                      }
+                      e.currentTarget.value = val.slice(0, 11);
+                    }}
                     className={`rounded-xl transition-all ${errors.whatsapp ? "border-red-500 focus-visible:ring-red-500" : "border-slate-200 focus-visible:ring-blue-500"}`}
                   />
-                  {errors.whatsapp && <p className="text-xs text-red-500 font-medium">{errors.whatsapp.message}</p>}
+                  <div className="flex justify-between items-center">
+                    <p className="text-[10px] text-slate-400 font-medium">Enter digits only</p>
+                    {errors.whatsapp && <p className="text-xs text-red-500 font-medium">{errors.whatsapp.message}</p>}
+                  </div>
                 </motion.div>
 
                 <motion.div
                   animate={errors.challenge ? shakeAnimation : {}}
                   className="space-y-2"
                 >
-                  <Label htmlFor="challenge" className="text-slate-700 font-medium">Business Challenge</Label>
+                  <Label htmlFor="challenge" className="text-slate-900 font-semibold">Business Challenge</Label>
                   <Textarea
                     id="challenge"
                     placeholder="Describe the main obstacle your business is facing..."

@@ -38,9 +38,9 @@ export default function Home() {
 
       {/* Navigation */}
       <nav className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/70 backdrop-blur-xl">
-        <div className="container mx-auto flex h-20 items-center justify-between px-6">
+        <div className="container mx-auto flex h-16 items-center justify-between px-6">
           <a href="#" className="flex items-center gap-2 sm:gap-3 cursor-pointer">
-            <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-[#0F172A] text-white font-bold text-lg sm:text-xl shadow-lg shadow-slate-200">O</div>
+            <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-[#0F172A] text-white font-bold text-lg shadow-lg shadow-slate-200">O</div>
             <span className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F172A]">Origboge Consult</span>
           </a>
 
@@ -92,10 +92,10 @@ export default function Home() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative py-24 lg:py-40">
+        <section className="relative pt-6 pb-10 lg:pt-12 lg:pb-20">
           <div className="container mx-auto px-6">
-            <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-              <div className="flex flex-col justify-center space-y-10">
+            <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+              <div className="flex flex-col justify-center space-y-6">
                 <div className="space-y-6">
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
@@ -183,65 +183,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact Details Section */}
-        <section className="py-12 bg-white/30 backdrop-blur-sm border-y border-slate-100">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 w-full max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-4 group justify-start sm:justify-center"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-sm">
-                  <Mail className="h-5 w-5" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400">Email Us</span>
-                  <a href="mailto:origboge@gmail.com" className="text-sm font-bold text-[#0F172A] hover:text-blue-600 transition-colors">origboge@gmail.com</a>
-                </div>
-              </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="flex items-center gap-4 group justify-start sm:justify-center"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-sm">
-                  <Phone className="h-5 w-5" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400">Call Us</span>
-                  <a href="tel:+2349034816423" className="text-sm font-bold text-[#0F172A] hover:text-blue-600 transition-colors">+234 903 481 6423</a>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="flex items-center gap-4 group justify-start sm:justify-center"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-[#0F172A] group-hover:bg-[#0F172A] group-hover:text-white transition-all shadow-sm cursor-pointer">
-                  <XIcon className="h-5 w-5" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400">Follow Us</span>
-                  <a href="https://x.com/origboge" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#0F172A] hover:text-blue-600 transition-colors">@origboge</a>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
 
         {/* Features Section */}
-        <section id="services" className="py-32 bg-white/50 border-y border-slate-200">
+        <section id="services" className="pt-10 pb-16 bg-white/50 border-y border-slate-200">
           <div className="container mx-auto px-6">
-            <div className="text-center space-y-6 mb-20">
-              <h2 className="text-4xl font-bold tracking-tight text-[#0F172A] sm:text-5xl">Our Core Expertise</h2>
+            <div className="text-center space-y-3 mb-10">
+              <h2 className="text-3xl font-bold tracking-tight text-[#0F172A] sm:text-5xl">Our Core Expertise</h2>
               <p className="mx-auto max-w-[700px] text-slate-500 text-lg md:text-xl">
                 We don&apos;t just advise; we partner with you to execute and deliver tangible outcomes.
               </p>
@@ -289,9 +237,15 @@ export default function Home() {
                   whileTap={{ scale: 0.98 }}
                   className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-10 shadow-sm transition-all hover:shadow-xl hover:border-blue-100 cursor-pointer"
                 >
-                  <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-50 text-[#0F172A] group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                  <motion.div 
+                    initial={{ backgroundColor: "rgb(248 250 252)", color: "rgb(15 23 42)" }}
+                    whileInView={{ backgroundColor: "rgb(37 99 235)", color: "rgb(255 255 255)" }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.4, delay: i * 0.1 }}
+                    className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm"
+                  >
                     <feature.icon className="h-7 w-7" />
-                  </div>
+                  </motion.div>
                   <h3 className="mb-3 text-2xl font-bold text-[#0F172A]">{feature.title}</h3>
                   <p className="text-slate-500 leading-relaxed text-lg">{feature.description}</p>
                 </motion.div>
@@ -301,25 +255,57 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-32 bg-[#0F172A] text-white relative overflow-hidden">
+        <section className="py-16 bg-[#0F172A] text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] -mr-48 -mt-48" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-600/10 rounded-full blur-[100px] -ml-48 -mb-48" />
 
           <div className="container mx-auto px-6 relative z-10">
-            <div className="flex flex-col items-center justify-center space-y-10 text-center">
-              <div className="space-y-6">
-                <h2 className="text-4xl font-bold tracking-tight sm:text-6xl max-w-4xl">Ready to transform your business?</h2>
-                <p className="mx-auto max-w-[600px] text-slate-400 text-xl">
+            <div className="flex flex-col items-center justify-center space-y-6 text-center">
+              <div className="space-y-3">
+                <h2 className="text-3xl font-bold tracking-tight sm:text-6xl max-w-4xl">Ready to transform your business?</h2>
+                <p className="mx-auto max-w-[600px] text-slate-400 text-lg">
                   Join 500+ businesses that have scaled with Origboge Consult. Your first consultation is on us.
                 </p>
               </div>
-              <Button
+               <Button
                 size="lg"
                 className="bg-blue-600 text-white hover:bg-blue-700 px-10 py-8 text-xl font-bold rounded-full shadow-2xl shadow-blue-900/20 transition-all hover:scale-105"
                 onClick={() => document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Get Started Now
               </Button>
+
+              <div className="pt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-3xl mx-auto border-t border-white/10">
+                <div className="flex items-center gap-4 group justify-start sm:justify-center">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/5 text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <Mail className="h-5 w-5" />
+                  </div>
+                  <div className="flex flex-col items-start text-left">
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400">Email Us</span>
+                    <a href="mailto:origboge@gmail.com" className="text-sm font-bold text-white hover:text-blue-400 transition-colors">origboge@gmail.com</a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 group justify-start sm:justify-center">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/5 text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <Phone className="h-5 w-5" />
+                  </div>
+                  <div className="flex flex-col items-start text-left">
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400">Call Us</span>
+                    <a href="tel:+2349034816423" className="text-sm font-bold text-white hover:text-blue-400 transition-colors">+234 903 481 6423</a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 group justify-start sm:justify-center">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/5 text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all cursor-pointer">
+                    <XIcon className="h-5 w-5" />
+                  </div>
+                  <div className="flex flex-col items-start text-left">
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400">Follow Us</span>
+                    <a href="https://x.com/origboge" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-white hover:text-blue-400 transition-colors">@origboge</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
