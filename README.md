@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+**Origboge Consult – Lead Capture & Automation System**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+A premium, full-stack lead generation and automation platform built for **Origboge Consult**. This project demonstrates high-end UI/UX design, secure API integrations, and automated business logic.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 How It Works
+The system follows a modern serverless architecture:
+1.  **Frontend:** A responsive **Next.js** application captures user data through a validated form.
+2.  **Logic & Animation:** **Framer Motion** provides premium visual feedback, while **Zod** ensures data integrity on the client side.
+3.  **Secure API Bridge:** Data is sent to a localized Next.js API route, which securely masks our backend credentials and forwards the payload to **Google Apps Script**.
+4.  **Automation:** The backend automatically appends the lead to **Google Sheets**, executes a **lead-tagging algorithm** (categorizing leads as "Hot" or "General" based on urgency), and triggers an instant **Email notification** to the admin.
+5. **Integrated WhatsApp Webhook for instant mobile lead alerts.**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tools Used
+* **Next.js (App Router):** For optimized performance and professional folder structure.
+* **Tailwind CSS:** For the "Midnight Navy" and "Electric Blue" consulting aesthetic.
+* **Framer Motion:** For staggered load animations and interactive UI states.
+* **Google Apps Script:** As a serverless backend for database management and email triggers.
+* **Lucide React & Sonner:** For high-quality iconography and toast notifications.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📈 Production Improvements
+To scale this system for a global enterprise, the following would be implemented:
+* **Security:** Integration of **Google reCAPTCHA v3** to eliminate spam submissions.
+* **CRM Integration:** Transitioning from Google Sheets to a dedicated CRM like **HubSpot** or **Salesforce** via their native APIs.
+* **Observability:** Adding **Sentry** for real-time error tracking and **Google Analytics** to monitor conversion rates and user behavior on the landing page.
