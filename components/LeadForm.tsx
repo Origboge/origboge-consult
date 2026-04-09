@@ -196,8 +196,8 @@ export function LeadForm() {
           <Card
             className="w-full max-w-md mx-auto border-slate-200 shadow-2xl rounded-2xl"
             style={{
-              backgroundImage: `radial-gradient(circle, rgba(59,130,246,0.25) 1.2px, transparent 1.2px)`,
-              backgroundSize: "24px 24px",
+              backgroundImage: `radial-gradient(circle, rgba(59,130,246,0.12) 1px, transparent 1px)`,
+              backgroundSize: "22px 22px",
               backgroundColor: "#ffffff",
             }}
           >
@@ -213,10 +213,10 @@ export function LeadForm() {
                   animate={errors.fullName ? shakeAnimation : {}}
                   className="space-y-2"
                 >
-                  <Label htmlFor="fullName" className="text-slate-900 font-semibold">Full Name</Label>
+                  <Label htmlFor="fullName" className="text-slate-700 font-medium">Full Name</Label>
                   <Input
                     id="fullName"
-                    placeholder="Femi Johnson"
+                    placeholder="Femi Jo"
                     {...register("fullName")}
                     className={`rounded-xl transition-all ${errors.fullName ? "border-red-500 focus-visible:ring-red-500" : "border-slate-200 focus-visible:ring-blue-500"}`}
                   />
@@ -227,7 +227,7 @@ export function LeadForm() {
                   animate={errors.email ? shakeAnimation : {}}
                   className="space-y-2"
                 >
-                  <Label htmlFor="email" className="text-slate-900 font-semibold">Email Address</Label>
+                  <Label htmlFor="email" className="text-slate-700 font-medium">Email Address</Label>
                   <Input
                     id="email"
                     type="email"
@@ -242,7 +242,7 @@ export function LeadForm() {
                   animate={errors.whatsapp ? shakeAnimation : {}}
                   className="space-y-2"
                 >
-                  <Label htmlFor="whatsapp" className="text-slate-900 font-semibold">WhatsApp Number</Label>
+                  <Label htmlFor="whatsapp" className="text-slate-700 font-medium">WhatsApp Number</Label>
                   <Input
                     id="whatsapp"
                     type="tel"
@@ -273,7 +273,7 @@ export function LeadForm() {
                   animate={errors.challenge ? shakeAnimation : {}}
                   className="space-y-2"
                 >
-                  <Label htmlFor="challenge" className="text-slate-900 font-semibold">Business Challenge</Label>
+                  <Label htmlFor="challenge" className="text-slate-700 font-medium">Business Challenge</Label>
                   <Textarea
                     id="challenge"
                     placeholder="Describe the main obstacle your business is facing..."
