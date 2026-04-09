@@ -216,7 +216,7 @@ export function LeadForm() {
                   <Label htmlFor="fullName" className="text-slate-700 font-medium">Full Name</Label>
                   <Input
                     id="fullName"
-                    placeholder="Femi Jo"
+                    placeholder="Femi John"
                     {...register("fullName")}
                     className={`rounded-xl transition-all ${errors.fullName ? "border-red-500 focus-visible:ring-red-500" : "border-slate-200 focus-visible:ring-blue-500"}`}
                   />
