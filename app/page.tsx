@@ -33,58 +33,16 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-[#0F172A] selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
+    <div className="min-h-screen bg-white font-sans text-[#0F172A] selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
       <Toaster position="top-center" richColors />
-
-      {/* Floating Bubbles */}
-      {mounted && (
-        <div className="fixed inset-0 -z-20 overflow-hidden pointer-events-none">
-          {Array.from({ length: 15 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute bg-blue-300/10 rounded-full"
-              style={{
-                width: Math.random() * 80 + 20 + "px",
-                height: Math.random() * 80 + 20 + "px",
-                left: Math.random() * 100 + "%",
-                top: Math.random() * 100 + "%",
-              }}
-              animate={{
-                y: [0, -100, 0],
-                x: [0, Math.random() * 50 - 25, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: Math.random() * 10 + 10,
-                repeat: Infinity,
-                ease: "easeInOut" as const,
-              }}
-            />
-          ))}
-        </div>
-      )}
-
-      {/* Background Blobs */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{ scale: [1, 1.1, 1], x: [0, 20, 0], y: [0, -20, 0] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-blue-100/30 rounded-full blur-[120px]"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.15, 1], x: [0, -30, 0], y: [0, 30, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute -bottom-[10%] -right-[10%] w-[60%] h-[60%] bg-teal-50/40 rounded-full blur-[140px]"
-        />
-      </div>
 
       {/* Navigation */}
       <nav className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/70 backdrop-blur-xl">
         <div className="container mx-auto flex h-20 items-center justify-between px-6">
-          <div className="flex items-center gap-2 sm:gap-3">
+          <a href="#" className="flex items-center gap-2 sm:gap-3 cursor-pointer">
             <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-[#0F172A] text-white font-bold text-lg sm:text-xl shadow-lg shadow-slate-200">O</div>
             <span className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F172A]">Origboge Consult</span>
-          </div>
+          </a>
 
           <div className="hidden md:flex items-center gap-10">
             <a href="#services" className="text-sm font-semibold text-slate-500 hover:text-[#0F172A] transition-colors">Services</a>
@@ -93,7 +51,10 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-4">
-            <Button className="rounded-full bg-[#0F172A] px-4 py-4 sm:px-7 sm:py-6 text-xs sm:text-sm font-bold text-white hover:bg-slate-800 transition-all shadow-xl shadow-slate-200">
+            <Button
+              className="rounded-full bg-[#0F172A] px-4 py-4 sm:px-7 sm:py-6 text-xs sm:text-sm font-bold text-white hover:bg-slate-800 transition-all shadow-xl shadow-slate-200"
+              onClick={() => document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Consult Now
             </Button>
 
@@ -169,7 +130,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
-                  className="flex flex-col sm:flex-row gap-6"
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-4"
                 >
                   <div className="flex items-center gap-3 text-sm font-semibold text-slate-600">
                     <div className="h-6 w-6 rounded-full bg-green-50 flex items-center justify-center">
@@ -182,6 +143,18 @@ export default function Home() {
                       <CheckCircle2 className="h-4 w-4 text-green-600" />
                     </div>
                     <span>Expert Implementation</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm font-semibold text-slate-600">
+                    <div className="h-6 w-6 rounded-full bg-green-50 flex items-center justify-center">
+                      <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    </div>
+                    <span>24-Hour Response Guarantee</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm font-semibold text-slate-600">
+                    <div className="h-6 w-6 rounded-full bg-green-50 flex items-center justify-center">
+                      <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    </div>
+                    <span>Proven ROI Track Record</span>
                   </div>
                 </motion.div>
 
@@ -308,12 +281,13 @@ export default function Home() {
               ].map((feature, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  whileHover={{ y: -8 }}
-                  className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-10 shadow-sm transition-all hover:shadow-xl hover:border-blue-100"
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-10 shadow-sm transition-all hover:shadow-xl hover:border-blue-100 cursor-pointer"
                 >
                   <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-50 text-[#0F172A] group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
                     <feature.icon className="h-7 w-7" />
@@ -354,10 +328,10 @@ export default function Home() {
       <footer className="border-t border-slate-200 bg-white py-16">
         <div className="container mx-auto px-6">
           <div className="flex flex-col items-center justify-between gap-10 md:flex-row">
-            <div className="flex items-center gap-3">
+            <a href="#" className="flex items-center gap-3 cursor-pointer">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0F172A] text-white font-bold text-sm">O</div>
-              <span className="text-xl font-bold tracking-tight text-[#0F172A] uppercase">Origboge Consult</span>
-            </div>
+              <span className="text-xl font-bold tracking-tight text-[#0F172A]">Origboge Consult</span>
+            </a>
             <p className="text-sm font-medium text-slate-400">
               © 2026 Origboge Consult Group. All rights reserved.
             </p>
